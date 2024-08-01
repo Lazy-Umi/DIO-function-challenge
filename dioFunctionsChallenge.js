@@ -25,44 +25,44 @@ Ao final deve se exibir uma mensagem:
 */
 
 const user = [
-    {name: "", win: 17,lose: 5},
-    {name: "", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5},
-    {name: "Jose", win: 2,lose: 5}
+    {name: "homer", win: 17,lose: 5},
+    {name: "jp", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5},
+    // {name: "Jose", win: 2,lose: 5}
 ]
 
-function rankCalc(usr, rank){
+
+function rankCalc(usr){
     for(let i = 0; i < usr.length; i++) {
-       let userName = user[i].name
        let wins = user[i].win
        let loses = user[i].lose
-       let winLoss = wins - loses
+       let winRateFunc = wins - loses
        
-       return winLoss
+       return winRateFunc
     }
-    return console.log("Rank invalido")
 }
-let victoryBalance = rankCalc(user)
-let ranking = ""
-for(let i = 0; i < usr.length; i++) {
-    let userName = user[i].name
 
+for(let j = 0; j < user.length; j++) {
+    let userName = user[j].name
+    let winRate = rankCalc(user)
+    let ranking = ""
+
+    
     switch(true){
-        case(rankCalc <= 10):
+        case(winRate <= 10):
             ranking = "Ferro"
-            console.log(victoryBalance + ranking)
+            console.log(winRate + ranking)
             break
-        case(rankCalc >= 11 && rankCalc <= 20):
+        case(winRate >= 11 && winRate <= 20):
             ranking = "Bronze"
-            console.log("")
+            console.log(winRate + ranking)
             break
         default: 
-            console.log("")
+            console.log("error")
         
     }
 }
-console.log(victoryBalance)

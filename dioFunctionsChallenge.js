@@ -36,8 +36,8 @@ const user = [
 ]
 
 
-function rankCalc(usr){
-    for(let i = 0; i < usr.length; i++) {
+function rankCalc(user){
+    for(let i = 0; i < user.length; i++) {
        let wins = user[i].win
        let loses = user[i].lose
        let winRateFunc = wins - loses
@@ -50,16 +50,16 @@ for(let j = 0; j < user.length; j++) {
     let userName = user[j].name
     let winRate = rankCalc(user)
     let ranking = ""
-
+    
     
     switch(true){
         case(winRate <= 10):
             ranking = "Ferro"
-            console.log(winRate + ranking)
+            console.log(`O Herói de nome ${userName} tem salde de ${winRate} e está no nível de ${ranking}`)
             break
         case(winRate >= 11 && winRate <= 20):
             ranking = "Bronze"
-            console.log(winRate + ranking)
+            console.log(`O Herói de nome ${userName} tem salde de ${winRate} e está no nível de ${ranking}`)
             break
         default: 
             console.log("error")

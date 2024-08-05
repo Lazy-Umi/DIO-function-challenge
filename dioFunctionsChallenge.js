@@ -24,45 +24,44 @@ Ao final deve se exibir uma mensagem:
 "O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**" 
 */
 
-const user = [
-    {name: "homer", win: 17,lose: 5},
-    {name: "jp", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5},
-    // {name: "Jose", win: 2,lose: 5}
-]
+    // objeto usuário, para guardar as informações do "Herói"
+let user = {
+    wins: 0,
+    loses: 0 
+}
+    // função para calcular o saldo de vitorias "winRate"
+function rankCalc(user, wins, loses){
+const winRate = wins - loses
+let rankingClassification = rankClassification(winRate)
 
+user.wins = wins
+user.loses = loses
+user.winRate = winRate
+user.rankingClassification = rankingClassification
 
-function rankCalc(user){
-    for(let i = 0; i < user.length; i++) {
-       let wins = user[i].win
-       let loses = user[i].lose
-       let winRateFunc = wins - loses
-       
-       return winRateFunc
+}
+    // função com a estrutura de decisão que dara o retorno do "ranking"
+function rankClassification(winRate){
+    if(winRate <= 10) {
+        return  "Ferro"
+    }else if(winRate >= 11 && winRate <= 20) {
+        return  "Bronze"
+    }else if(winRate >= 21 && winRate <= 50) {
+        return  "Prata"
+    }else if(winRate >= 51 && winRate <= 80) {
+        return  "Ouro"
+    }else if(winRate >= 81 && winRate <= 90) {
+        return  "Diamante"
+    }else if(winRate >= 91 && winRate <= 100) {
+        return  "Lendário"
+    }else if(winRate >= 101) {
+        return  "Imortal"
+    }else{
+        return  "Héroi sem ranking"
     }
 }
 
-for(let j = 0; j < user.length; j++) {
-    let userName = user[j].name
-    let winRate = rankCalc(user)
-    let ranking = ""
-    
-    
-    switch(true){
-        case(winRate <= 10):
-            ranking = "Ferro"
-            console.log(`O Herói de nome ${userName} tem salde de ${winRate} e está no nível de ${ranking}`)
-            break
-        case(winRate >= 11 && winRate <= 20):
-            ranking = "Bronze"
-            console.log(`O Herói de nome ${userName} tem salde de ${winRate} e está no nível de ${ranking}`)
-            break
-        default: 
-            console.log("error")
-        
-    }
-}
+    // chamada da função de calculo, utilizando o objeto "user" e definindo os valores de vitórias e derrotas
+rankCalc(user, 80, 56)
+
+console.log(`O Herói tem de saldo de ${user.winRate} está no nível de ${user.rankingClassification}`)
